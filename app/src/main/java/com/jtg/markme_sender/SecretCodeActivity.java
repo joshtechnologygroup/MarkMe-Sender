@@ -29,6 +29,8 @@ public class SecretCodeActivity extends AppCompatActivity {
         editor.putString(getString(R.string.secret_code_key_name), code);
         editor.commit();
         Toast.makeText(getApplicationContext(), "Code Updated: " + code, Toast.LENGTH_SHORT).show();
+        Intent secretCodePage = new Intent(SecretCodeActivity.this, MainActivity.class);
+        startActivity(secretCodePage);
     }
 
     @Override
