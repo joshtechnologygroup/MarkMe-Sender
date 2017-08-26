@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public final String EXIT_CODE = "02";
 
     public final String ACCEPT_MESSAGE = "%s Marked. :)";
-    public final String REJECT_MESSAGE = "Request Failed. Try Again.";
+    public final String REJECT_MESSAGE = "Request Taking Too Long/Failed. Try Again.";
 
     private void initSecretCode(){
         SharedPreferences sharedPreferences = getSharedPreferences(
@@ -69,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
                         else{
                             requestTypeText = "Exit";
                         }
+                        System.out.println("in here 2" + String.format(ACCEPT_MESSAGE, requestTypeText));
                         statusText.setText(String.format(ACCEPT_MESSAGE, requestTypeText));
+                        System.out.println("in here 3");
                         lastRequest = "";
                         lastRequestType = "";
                     }
@@ -128,13 +130,15 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("1 -- " + combinedChirpData);
         this.lastRequest = combinedChirpData;
         this.lastRequestType = lastRequestType;
-        statusText.setText("");
+        statusText.setText(".....");
         chirpSDK.chirp(new Chirp(combinedChirpData));
 //            TODO: Reset volume to original after sending data.
 //            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, origVolume, 0);
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                statusText.setText(REJECT_MESSAGE);
+                // If last request is still pending.
+                if(!lastRequest.isEmpty())
+                    statusText.setText(REJECT_MESSAGE);
             }
         }, 4000);
     }

@@ -46,13 +46,13 @@
 
     <TextView
         android:id="@+id/statusText"
-        android:layout_width="270dp"
-        android:layout_height="77dp"
+        android:layout_width="0dp"
+        android:layout_height="117dp"
         android:textSize="14pt"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="57dp"
-        android:layout_marginEnd="57dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="44dp"
         tools:layout_constraintLeft_creator="1"
