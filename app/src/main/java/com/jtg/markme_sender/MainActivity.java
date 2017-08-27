@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         );
         this.userSecretCode = sharedPreferences.getString(getString(R.string.secret_code_key_name), "");
         if(this.userSecretCode.isEmpty()){
+            chirpSDK.stop();
             Intent secretCodePage = new Intent(MainActivity.this, SecretCodeActivity.class);
             startActivity(secretCodePage);
         }
@@ -185,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         this.setSecretCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                chirpSDK.stop();
                 Intent secretCodePage = new Intent(MainActivity.this, SecretCodeActivity.class);
                 startActivity(secretCodePage);
             }
